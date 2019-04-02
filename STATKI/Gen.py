@@ -2,6 +2,8 @@ import numpy as np
 import random as ran
 
 plansza = np.zeros(shape=(10,10))
+
+
 def one():
     
     x = ran.randint(0, len(plansza)-1)
@@ -20,6 +22,8 @@ def one():
                 return one()
             else:
                 plansza[y,x] = 1
+        else:
+            return Exception
                 
     except IndexError:
         return one()
@@ -29,5 +33,8 @@ def one():
 
 def four():
     pozpion = ran.randint(0,1)
+
+    x = ran.randint(0, len(plansza)-1)
+    y = ran.randint(0, len(plansza)-1)
     
     return pozpion
