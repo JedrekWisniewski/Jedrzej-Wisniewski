@@ -38,15 +38,15 @@ def four():
     y = ran.randint(0, len(plansza)-1)
 
     if pozpion == 0:
-        y.append(y[0]+1)
-        y.append(y[1]+1)
-        y.append(y[2]+1)
+        y1 = y[0]+1
+        y2 = y1[0] + 1
+        
     elif pozpion == 1:
-        x.append(x[0]+1)
-        x.append(x[1]+1)
-         x.append(x[2]+1)
+        x1 = x[0]+1
     else:
         raise Exception
-    
+
+    try:
+        if plansza[y,x] == 0
     return pozpion
 
