@@ -3,7 +3,7 @@ import random as ran
 
 plansza = np.zeros(shape=(10,10))
 
-
+#def sprawdzenie(y,x):
 def one():
     
     x = ran.randint(0, len(plansza)-1)
@@ -12,14 +12,14 @@ def one():
     try:
         if plansza[y,x] == 0:
 
-            if plansza[y+1,x] != 0:
-                return one()
-            elif plansza[y-1,x] != 0:
-                return one()
-            elif plansza[y,x+1] != 0:
-                return one()
-            elif plansza[y,x-1] != 0:
-                return one()
+            if plansza[y+1,x] != 0:#TO NAJLEPIEJ ZAPISAĆ  SPRAWDZENIE(y,x)
+                return one()#jako funkcję biorącą 2 argumenty do sprawdzenia
+            elif plansza[y-1,x] != 0:#
+                return one()#
+            elif plansza[y,x+1] != 0:#
+                return one()#
+            elif plansza[y,x-1] != 0:#
+                return one()#
             else:
                 plansza[y,x] = 1
         else:
@@ -41,6 +41,10 @@ def four():
         y1 = y+1
         y2 = y1+1
         y3 = y2+1
+        if plansza[y,x] == 0 and plansza[y1,x] == 0
+        and plansza [y2,x] == 0 and plansza [y4,x]==0:
+            #sprawdzenie() - tu trzeba wrzucić funkcje z góry 
+            #żeby brała dwa argumenty, y i x
     elif pozpion == 1:
         x1 = x+1
         x2 = x1+1
