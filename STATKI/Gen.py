@@ -23,7 +23,7 @@ def one():
             else:
                 plansza[y,x] = 1
         else:
-            return Exception
+            raise Exception
                 
     except IndexError:
         return one()
@@ -40,6 +40,13 @@ def four():
     if pozpion == 0:
         y.append(y[0]+1)
         y.append(y[1]+1)
+        y.append(y[2]+1)
+    elif pozpion == 1:
+        x.append(x[0]+1)
+        x.append(x[1]+1)
+         x.append(x[2]+1)
+    else:
+        raise Exception
     
     return pozpion
 
