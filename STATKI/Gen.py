@@ -27,4 +27,7 @@ def one():
         
     return print(plansza),print("Poziomo :",x,"\nPionowo :",y)
 
-
+def four():
+    pozpion = ran.randint(0,1)
+    
+    return pozpion
