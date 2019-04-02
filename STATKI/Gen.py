@@ -36,5 +36,10 @@ def four():
 
     x = ran.randint(0, len(plansza)-1)
     y = ran.randint(0, len(plansza)-1)
+
+    if pozpion == 0:
+        y.append(y[0]+1)
+        y.append(y[1]+1)
     
     return pozpion
+
