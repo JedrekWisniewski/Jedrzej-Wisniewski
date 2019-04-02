@@ -3,17 +3,7 @@ import random as ran
 
 plansza = np.zeros(shape=(10,10))
 def one():
-  
-    if True:
-        #poziom = ran.randint(0,1)
-        #if poziom == 0:
-            #x = ran.randint(0, len(plansza)-1)
-           # y = ran.randint(0, len(plansza)-1)
-           # xy = []
-          ##  xy.append(x)
-         #   xy.append(y)
-        
-        #else:
+    
         x = ran.randint(0, len(plansza)-1)
         y = ran.randint(0, len(plansza)-1)
         
