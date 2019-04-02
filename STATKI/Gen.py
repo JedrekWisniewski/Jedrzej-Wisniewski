@@ -4,8 +4,8 @@ import random as ran
 plansza = np.zeros(shape=(10,10))
 def one():
     
-        x = ran.randint(0, len(plansza)-1)
-        y = ran.randint(0, len(plansza)-1)
+    x = ran.randint(0, len(plansza)-1)
+    y = ran.randint(0, len(plansza)-1)
         
     try:
         if plansza[y,x] == 0:
