@@ -20,6 +20,7 @@ def one():
                 return one()
             else:
                 plansza[y,x] = 1
+                
     except IndexError:
         return one()
     
