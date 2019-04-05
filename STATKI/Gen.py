@@ -180,7 +180,7 @@ def four():
         x2 = x+2
         x3 = x+3
         if x3 > 9:
-            return three()
+            return four()
         else:
             if plansza[y,x] == 0 and plansza[y,x1] == 0 and plansza[y,x2] == 0 and plansza[y,x3] == 0:
                 plansza[y,x] = 4
@@ -218,7 +218,7 @@ def four():
         y2 = y+2
         y3 = y+3
         if y3 > 9:
-            return three()
+            return four()
         else:
             if plansza[y,x] == 0 and plansza[y1,x] == 0 and plansza[y2,x] == 0 and plansza[y3,x] == 0:
                 plansza[y,x] = 4
