@@ -120,7 +120,7 @@ class Gracz(object):
                         self.plansza[y-1,x] = 5
                         self.plansza[y-1,x1] = 5
                         self.plansza[y-1,x2] = 5
-                        if x1+1 <= 9:
+                        if x2+1 <= 9:
                             self.plansza[y-1,x2+1] = 5
                         if x-1 >= 0:
                             self.plansza[y-1,x-1] = 5
@@ -266,3 +266,9 @@ class Gracz(object):
         self.one()
         self.czyszczenie()
         return self.plansza
+
+if __name__ == "__main__":
+    Gracz = Gracz()
+    Gracz.generator()
+    print(Gracz.plansza)
+ 
