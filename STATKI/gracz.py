@@ -41,3 +41,25 @@ print("liczba wierszy: ",ilewierszy)
 print("lista wierszy: ",wiersze)
 print("lista kolumn: ",kolumny)
 
+
+
+#ustawianie statakow........................
+
+#jak odroznia statki
+#jesli elemt nastepny i/lub poprzedni  z wiersza jest rowny  i rozny od zera
+#jesli element i jest rowny  i rozny od zera w kolenym i/lub poprzednim  wierszu i rozny od zera
+
+
+listawszst=[]
+statek1m=[]
+statek2m=[]
+
+
+def jakimasztowiec(gracz1):#chcialam zeby funkcja lecciala po liscie gracz1
+    for i in range(0,len(kolumny)*len(wiersze)+1):#zeby sprawdzalo dla kazdej zmiennej  
+        lsitawszst=gracz1[i]#  zeby jako liste tymczasowo wrzucalo podliste gracz1 tzn caly wiersz 
+        if listawszst[i]==2 : #  jesli zmienna jest 2 to wrzuc ja do dwumasztowcow
+           statek2m.append(wiersze[i])
+
+#NIE WYWALA BLEDU ALE JAK DAJE RETURNA TO NIE WYRZUCA NIC XD
+
