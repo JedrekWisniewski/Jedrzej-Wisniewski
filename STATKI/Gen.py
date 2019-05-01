@@ -254,19 +254,21 @@ class Gracz(object):
             y = y+1
             
     def generator(self):
-        self.four()
-        self.three()
-        self.three()
-        self.two()
-        self.two()
-        self.two()
-        self.one()
-        self.one()
-        self.one()
-        self.one()
-        self.czyszczenie()
-        return self.plansza
-
+        try:
+            self.four()
+            self.three()
+            self.three()
+            self.two()
+            self.two()
+            self.two()
+            self.one()
+            self.one()
+            self.one()
+            self.one()
+            self.czyszczenie()
+            return self.plansza
+        except:
+            return self.generator()
 if __name__ == "__main__":
     Gracz = Gracz()
     Gracz.generator()
