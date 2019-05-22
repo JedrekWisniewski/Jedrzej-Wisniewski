@@ -1,6 +1,7 @@
 import numpy as np
 import random as ran
-
+import sys
+miejscedocelowe = sys.argv[1]
 class Gracz(object):
     def __init__(self):
         self.plansza = np.zeros(shape=(10,10))
@@ -266,7 +267,7 @@ class Gracz(object):
             self.one()
             self.one()
             self.czyszczenie()
-            return self.plansza
+            np.save(miejscedocelowe,self.plansza,)
         except:
             return self.generator()
 if __name__ == "__main__":
