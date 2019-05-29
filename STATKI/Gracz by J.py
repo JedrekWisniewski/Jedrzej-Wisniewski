@@ -153,22 +153,23 @@ cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4 = tworzenie()
 flota = [cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4]
 
 czytrafione = []
-pierwszenstwo = sys.argv[1]
-def wielka_gra():    
-    if pierwszenstwo == "s":
-        fire()
-        czytrafione.append(input())
-        enemyfire = input()
-        obrywamy(enemyfire)
-        if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
-            return 1
-    else:
-        enemyfire = input()
-        obrywamy(enemyfire)
-        fire()
-        czytrafione.append(input())
-        if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
-            return 1
+pierwszenstwo = "s"
+def wielka_gra():
+    while True :
+        if pierwszenstwo == "s":
+            fire()
+            czytrafione.append(input())
+            enemyfire = input()
+            obrywamy(enemyfire)
+            
+            if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
+                sys.exit()
+        else:
+            enemyfire = input()
+            obrywamy(enemyfire)
+            fire()
+            czytrafione.append(input())
+            if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
+                sys.exit()
 
-while wielka_gra() != 0:
-    wielka_gra()
+wielka_gra()
