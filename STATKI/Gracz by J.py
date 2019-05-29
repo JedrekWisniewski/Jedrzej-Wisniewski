@@ -20,15 +20,19 @@ class Czteromaszt():
         if enemyfire == self.a:
             print("Trafiony")
             self.a = -1
+            return "4t"
         elif enemyfire == self.b:
             print("Trafiony")
             self.b = -1
+            return "4t"
         elif enemyfire == self.c:
             print("Trafiony")
             self.c = -1
+            return "4t"
         elif enemyfire == self.d:
             print("Trafiony")
             self.d = -1
+            return "4t"
         if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
             self.a = "już zatopiony, sorki"
             print ("Czteromasztowiec zatopiony")
@@ -44,12 +48,15 @@ class Trojmaszt():
         if enemyfire == self.a:
             print("Trafiony")
             self.a = -1
+            return "3t"
         elif enemyfire == self.b:
             print("Trafiony")
             self.b = -1
+            return "3t"
         elif enemyfire == self.c:
             print("Trafiony")
             self.c = -1
+            return "3t"
         if self.a == -1 and self.b == -1 and self.c == -1:
             self.a = "już zatopiony"
             print("Zatopiony trójmasztowiec")
@@ -63,9 +70,11 @@ class Dwumaszt():
         if enemyfire == self.a:
             print("Trafiony")
             self.a = -1
+            return "2t"
         elif enemyfire == self.b:
             print("Trafiony")
             self.b = -1
+             return "2t"
         if self.a == -1 and self.b == -1:
             self.a = "już zatopiony"
             print("Zatopiony dwumasztowiec")
@@ -78,6 +87,7 @@ class Jednomaszt():
         if enemyfire == self.a:
             print ("Trafiony")
             self.a = -1
+            return "1t"
         if self.a == -1:
             self.a = "już zatopiony"
             print ("Zatopiony jednomasztowiec")
