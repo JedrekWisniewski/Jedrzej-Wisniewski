@@ -34,7 +34,7 @@ class Czteromaszt():
             self.d = -1
             return "4t"
         if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
-            self.a = "już zatopiony, sorki"
+            self.a = "już zatopiony"
             print ("Czteromasztowiec zatopiony")
             return "4z"
             
@@ -74,7 +74,7 @@ class Dwumaszt():
         elif enemyfire == self.b:
             print("Trafiony")
             self.b = -1
-             return "2t"
+            return "2t"
         if self.a == -1 and self.b == -1:
             self.a = "już zatopiony"
             print("Zatopiony dwumasztowiec")
@@ -151,5 +151,24 @@ def test(strzaltest = 10):
 mymap = wczytywanie()
 cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4 = tworzenie()
 flota = [cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4]
-#test()
 
+czytrafione = []
+pierwszenstwo = sys.argv[1]
+def wielka_gra():    
+    if pierwszenstwo == "s":
+        fire()
+        czytrafione.append(input())
+        enemyfire = input()
+        obrywamy(enemyfire)
+        if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
+            return 1
+    else:
+        enemyfire = input()
+        obrywamy(enemyfire)
+        fire()
+        czytrafione.append(input())
+        if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
+            return 1
+
+while wielka_gra() != 0:
+    wielka_gra()
