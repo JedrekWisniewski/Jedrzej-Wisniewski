@@ -4,8 +4,6 @@ import numpy as np
 import sys
 import random as r
 
-sys.setrecursionlimit(5000)
-
 ruchy = ["a01","a02","a03","a04","a05","a06","a07","a08","a09","a10",
          "b01","b02","b03","b04","b05","b06","b07","b08","b09","b10",
          "c01","c02","c03","c04","c05","c06","c07","c08","c09","c10",
@@ -54,6 +52,7 @@ def wczytywanie(nazwapliku="Gracz1.npy"):
     mymap = np.load(nazwapliku)
     return mymap
     #enemymap tez bedzie
+
 class Czteromaszt():
     def __init__(self,a,b,c,d):
         self.a = a
@@ -174,7 +173,7 @@ def fire():
     print(strzal, "||||||||||", y)
     ruchy.pop(x)
     return(strzal)
-
+#Testowy ostrzał
 def fire2():
     y = len(ruchy2) - 1
     x = r.randint(0, y)
@@ -182,6 +181,12 @@ def fire2():
     print(strzal, "----------", y)
     ruchy2.pop(x)
     return(strzal)
+
+#zatapianie okrętów trafionych
+def dobijanie():
+    komunikat = sys.stdin
+    print("echo", komunikat)
+    return komunikat
     
 # Iteruje po każdym statku, wywołując metodę "trafiony" względem "enemyfire"=koordynatów
 def obrywamy(enemyfire):
