@@ -166,14 +166,206 @@ def fire():
             print(str(slownik1[x[0]]) + "10")
             return (str(slownik1[x[0]]) + "10")
 """
+dziennik = []
+ostatnistrzal = []
+#zatapianie okrętów trafionych
+def prawo(wsp_1,zatop_wsp):
+    try:
+        wsp_1 = slownik2[wsp_1]
+        wsp_1 = slownik1[wsp_1 + 1]
+        newkoord = wsp_1 + zatop_wsp[1] + zatop_wsp[2]
+        return newkoord, wsp_1
+    except:
+        newkoord = "blad"
+        wsp_1 = "blad"
+        return newkoord, wsp_1
+def lewo(wsp_1,zatop_wsp):
+    try:
+        wsp_1 = slownik2[wsp_1]
+        wsp_1 = slownik1[wsp_1  - 1]
+        newkoord = wsp_1 + zatop_wsp[1] + zatop_wsp[2]
+        return newkoord, wsp_1
+    except:
+        newkoord = "blad"
+        wsp_1 = "blad"
+        return newkoord, wsp_1
+        
+def gora(pion):
+    pion = int(pion)
+    pion = pion - 1
+    pion = str(pion)
+    pion = "0"+pion
+    return pion
+def dol(pion):
+    pion = int(pion)
+    pion = pion + 1
+    if pion < 10:
+        pion = "0" + str(pion)
+        return pion
+    else:
+        return str(pion)
+
+    
+def przygotowanie():
+    statek = []
+    komunikat = dziennik[len(dziennik)-1]
+    if komunikat == "zatop_":
+        #pierwszy koord
+        zatop_wsp = ostatnistrzal[len(ostatnistrzal)-1]
+        statek.append(zatop_wsp)
+        wsp_1 = zatop_wsp[0]
+        pion = int(zatop_wsp[1] + zatop_wsp[2])
+        #w lewo
+        newkoord, wsp_2 = lewo(wsp_1, zatop_wsp)
+        if newkoord in ostatnistrzal:
+            statek.append(newkoord)
+            #dalej w lewo
+            newkoord, wsp_3 = lewo(wsp_2, zatop_wsp)
+            if newkoord in ostatnistrzal:
+                statek.append(newkoord)
+                #dalej w lewo
+                newkoord, wsp_4 = lewo(wsp_3, zatop_wsp)
+                if newkoord in ostatnistrzal:
+                    statek.append(newkoord)
+                 #i w prawo 4
+                else:
+                    newkoord,wsp_4 = prawo(wsp_1, zatop_wsp)
+                    if newkoord in ostatnistrzal:
+                        statek.append(newkoord)
+             #tez w prawo do 3
+            else:
+                newkoord,wsp_3 = prawo(wsp_1, zatop_wsp)
+                if newkoord in ostatnistrzal:
+                    statek.append(newkoord)
+                    #do 4 w prawo
+                    newkoord,wsp_4 = prawo(wsp_3, zatop_wsp)
+                    if newkoord in ostatnistrzal:
+                        statek.append(newkoord)
+        else:
+            #w prawo do 2ch
+            newkoord, wsp_2 = prawo(wsp_1, zatop_wsp)
+            if newkoord in ostatnistrzal:
+                statek.append(newkoord)
+                #w prawo do 3ch
+                newkoord, wsp_3 = prawo(wsp_2, zatop_wsp)
+                if newkoord in ostatnistrzal:
+                    statek.append(newkoord)
+                    #w prawo do 4rech
+                    newkoord, wsp_4 = prawo(wsp_3, zatop_wsp)
+                    if newkoord in ostatnistrzal:
+                        statek.append(newkoord)
+        #PRAWO I LEWO SKOŃCZONE, TERAZ GÓRA DÓŁ
+        #do góry 2
+        pion_1 = gora(pion)
+        newkoord = wsp_1 + pion_1
+        if newkoord in ostatnistrzal:
+            statek.append(newkoord)
+            #wyżej 3
+            pion_2 = gora(pion_1)
+            newkoord = wsp_1 + pion_2
+            if newkoord in ostatnistrzal:
+                statek.append(newkoord)
+                #wyżej 4
+                pion_3 = gora(pion_2)
+                newkoord = wsp_1 + pion_3
+                if newkoord in ostatnistrzal:
+                    statek.append(newkoord)
+                #w dół 4
+                else :
+                    pion_3 = dol(pion)
+                    newkoord = wsp_1 + pion_3
+                    if newkoord in ostatnistrzal:
+                        statek.append(newkoord)
+            #w dół 3
+            else:
+                pion_2 = dol(pion)
+                newkoord = wsp_1 + pion_2
+                if newkoord in ostatnistrzal:
+                    statek.append(newkoord)
+                    pion_3 = dol(pion_2)
+                    newkoord = wsp_1 + pion_3
+                    if newkoord in ostatnistrzal:
+                        statek.append(newkoord)
+        #w dół 2
+        else:
+            pion_1 = dol(pion)
+            newkoord = wsp_1 + pion_1
+            if newkoord in ostatnistrzal:
+                statek.append(newkoord)
+                pion_2 = dol(pion_1)
+                newkoord = wsp_1 + pion_1
+                if newkoord in ostatnistrzal:
+                    statek.append(newkoord)
+                    pion_3 = dol(pion_2)
+                    newkoord = wsp_1 + pion_1
+                    if newkoord in ostatnistrzal:
+                        statek.append(newkoord)
+
+    return statek
+
+def usungoradol(pozycja):
+    poz1 = pozycja[0]
+    poz2 = pozycja[1]
+    poz3 = pozycja[2]
+    pion = int(poz2+poz3)
+    czygora = pion - 1
+    czygora = "0" + str(czygora)
+    czydol = pion + 1
+    if czydol < 10:
+        czydol = "0" + str(czydol)
+    czygora = poz1 + czygora
+    czydol = poz1 + czydol
+    if czygora in ruchy:
+        ruchy.remove(czygora)
+    if czydol in ruchy:
+        ruchy.remove(czydol)
+    
+def usunboki(pozycja):
+    poz1 = pozycja[0]
+    pion = pozycja[1] + pozycja[2]
+    poz1 = slownik2[poz1]
+    lewo = slownik1[poz1 - 1]
+    prawo = slownik1[poz1 + 1]
+
+    lewo = lewo + pion
+    prawo = prawo + pion
+    if lewo in ruchy:
+        ruchy.remove(lewo)
+    if prawo in ruchy:
+        ruchy.remove(prawo)
+    
+def usunskosy(pozycja):
+    poz1 = pozycja[0]
+    pion = pozycja[1] + pozycja[2]
+    poz1 = slownik2[poz1]
+    lewo = slownik1[poz1 - 1]
+    prawo = slownik1[poz1 + 1]
+    usungoradol(prawo)
+    usungoradol(lewo)
+def korekta(statek):
+    for pozycja in statek:
+        try:
+            usungoradol(pozycja)
+            usunboki(pozycja)
+            usunskosy(pozycja)
+            continue
+        except:
+            usunboki(pozycja)#DOKOŃŃŃŃŃŃŃŃŃŃCZ
+                    
+        
+        
+
+#Losowanie strzału i wykorzystanie funkcji powyzej.
 def fire():
     y = len(ruchy) - 1
     x = r.randint(0, y)
     strzal = ruchy[x]
     print(strzal, "||||||||||", y)
+    ostatnistrzal.append(strzal)
     ruchy.pop(x)
     return(strzal)
-#Testowy ostrzał
+
+"""#Testowy ostrzał
 def fire2():
     y = len(ruchy2) - 1
     x = r.randint(0, y)
@@ -181,12 +373,9 @@ def fire2():
     print(strzal, "----------", y)
     ruchy2.pop(x)
     return(strzal)
+"""
 
-#zatapianie okrętów trafionych
-def dobijanie():
-    komunikat = sys.stdin
-    print("echo", komunikat)
-    return komunikat
+
     
 # Iteruje po każdym statku, wywołując metodę "trafiony" względem "enemyfire"=koordynatów
 def obrywamy(enemyfire):
@@ -210,13 +399,31 @@ mymap = wczytywanie()
 cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4 = tworzenie()
 flota = [cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4]
 
-czytrafione = []
+"""def tescior():
+    ostatnistrzal.append("a01")
+    ostatnistrzal.append("b01")
+    ostatnistrzal.append("c01")
+    ostatnistrzal.append("d02")
+    ostatnistrzal.append("d01")
+    ostatnistrzal.append("e01")
+    dziennik.append("pudlo_")
+    dziennik.append("trafio")
+    dziennik.append("trafio")
+    dziennik.append("pudlo_")
+    dziennik.append("trafio")
+    dziennik.append("zatop_")
+    statek =przygotowanie()
+    print(statek)
+tescior()
+"""
 pierwszenstwo = sys.argv[1]
 
 def proba():
     if pierwszenstwo == "-s":
         fire()
-        enemyfire = fire2()
+        dziennik.append(sys.stdin)
+        korekta()
+        enemyfire = sys.stdin
         a = enemyfire[0]
         a = slownik2[a]
         b = int(enemyfire[1])
@@ -230,8 +437,8 @@ def proba():
             sys.exit()
         return proba()
     
-    else:
-        enemyfire = fire()
+    elif pierwszenstwo == "-d":
+        enemyfire = sys.stdin
         a = enemyfire[0]
         a = slownik2[a]
         b = int(enemyfire[1])
@@ -241,28 +448,10 @@ def proba():
             c = 9
         obrywamy((a,c))
         fire2()
+        dziennik.append(sys.stdin)
+        korekta()
         if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
             print("koniec")
             sys.exit()
         return proba()
-proba()
-
-"""def wielka_gra():
-    while True :
-        if pierwszenstwo == "s":
-            fire()
-            czytrafione.append(input())
-            enemyfire = input()
-            obrywamy(enemyfire)
-            
-            if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
-                sys.exit()
-        else:
-            enemyfire = input()
-            obrywamy(enemyfire)
-            fire()
-            czytrafione.append(input())
-            if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
-                sys.exit()"""
-
 
