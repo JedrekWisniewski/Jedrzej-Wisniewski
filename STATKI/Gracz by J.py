@@ -422,8 +422,12 @@ pierwszenstwo = sys.argv[1]
 
 def gra():
     if pierwszenstwo == "-s":
-        fire()
-        dziennik.append(input())
+        x = fire()
+        print(x)
+        y = input()
+        if y == "trafio" or y == "zatop_":
+            ostatnistrzal.append(x)
+        dziennik.append(y)
         korekta()
         enemyfire = input()
         a = enemyfire[0]
@@ -449,7 +453,11 @@ def gra():
         else:
             c = 9
         obrywamy((a,c))
-        fire()
+        x = fire()
+        print(x)
+        y = input()
+        if y == "trafio" or y == "zatop_":
+            ostatnistrzal.append(x)
         dziennik.append(input())
         korekta()
         if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
@@ -458,3 +466,25 @@ def gra():
         return gra()
 
 gra()
+"""
+def test():
+    enemyfire = fire()
+    a = enemyfire[0]
+    a = slownik2[a]
+    b = int(enemyfire[1])
+    if b == 0:
+        c = int(enemyfire[2])-1
+    else:
+        c = 9
+    y = obrywamy((a,c))
+    if y == "trafio" or y == "zatop_":
+        ostatnistrzal.append(x)
+    dziennik.append(y)
+    korekta()
+    if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
+        print("koniec")
+        sys.exit()
+    return test()
+
+test()
+"""
