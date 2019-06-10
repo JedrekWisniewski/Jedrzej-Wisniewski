@@ -346,11 +346,17 @@ def korekta(statek):
     for pozycja in statek:
         try:
             usungoradol(pozycja)
-            usunboki(pozycja)
-            usunskosy(pozycja)
-            continue
         except:
-            usunboki(pozycja)#DOKOŃŃŃŃŃŃŃŃŃŃCZ
+            pass
+        try:
+            usunboki(pozycja)
+        except:
+            pass
+        try:
+            usunskosy(pozycja)
+        except:
+            pass
+
                     
         
         
@@ -365,7 +371,7 @@ def fire():
     ruchy.pop(x)
     return(strzal)
 
-"""#Testowy ostrzał
+#Testowy ostrzał
 def fire2():
     y = len(ruchy2) - 1
     x = r.randint(0, y)
@@ -373,7 +379,7 @@ def fire2():
     print(strzal, "----------", y)
     ruchy2.pop(x)
     return(strzal)
-"""
+
 
 
     
