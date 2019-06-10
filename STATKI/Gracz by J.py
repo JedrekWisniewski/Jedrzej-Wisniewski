@@ -186,30 +186,7 @@ def tworzenie():
     jed3 = Jednomaszt((y[2],x[2]))
     jed4 = Jednomaszt((y[3],x[3]))
     return cztm ,trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4
-"""
-#Lista w której zapisywane są koordynaty strzałów            
-ourshots = []
-#Strzał losowy, koordynaty
-def random_shoot():
-    strzalpoz = r.randint(0,9)
-    strzalpion = r.randint(0,9)
-    return strzalpion, strzalpoz
 
-#Sprawdza czy strzał dozwolony, jeśli tak, wypluwa koordynaty , a strzał zapisuje do listy
-
-def fire():    
-    x = random_shoot()
-    if x in ourshots:
-        return fire()
-    else:
-        ourshots.append(x)
-        if x[1] < 9:
-            print(str(slownik1[x[0]]) + "0" + str(x[1]+1))
-            return (str(slownik1[x[0]]) + "0" + str(x[1]+1))
-        else:
-            print(str(slownik1[x[0]]) + "10")
-            return (str(slownik1[x[0]]) + "10")
-"""
 dziennik = []
 ostatnistrzal = []
 #zatapianie okrętów trafionych
@@ -252,8 +229,7 @@ def dol(pion):
         return pion
     else:
         return str(pion)
-
-    
+  
 def przygotowanie():
     statek = []
     komunikat = dziennik[len(dziennik)-1]
@@ -409,11 +385,7 @@ def korekta():
         try:
             usunskosy(pozycja)
         except:
-            pass
-
-                    
-        
-        
+            pass   
 
 #Losowanie strzału i wykorzystanie funkcji powyzej.
 def fire():
@@ -424,18 +396,6 @@ def fire():
     #ostatnistrzal.append(strzal)
     ruchy.pop(x)
     return(strzal)
-
-#Testowy ostrzał
-def fire2():
-    y = len(ruchy2) - 1
-    x = r.randint(0, y)
-    strzal = ruchy2[x]
-    print(strzal, "----------", y)
-    ruchy2.pop(x)
-    return(strzal)
-
-
-
     
 # Iteruje po każdym statku, wywołując metodę "trafiony" względem "enemyfire"=koordynatów
 def obrywamy(enemyfire):
@@ -457,26 +417,10 @@ def obrywamy(enemyfire):
 mymap = wczytywanie()
 cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4 = tworzenie()
 flota = [cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4]
-"""
-def tescior():
-    ostatnistrzal.append("a01")
-    ostatnistrzal.append("b01")
-    ostatnistrzal.append("b02")
-    ostatnistrzal.append("d02")
-    ostatnistrzal.append("b03")
-    ostatnistrzal.append("b04")
-    dziennik.append("pudlo_")
-    dziennik.append("trafio")
-    dziennik.append("trafio")
-    dziennik.append("pudlo_")
-    dziennik.append("trafio")
-    dziennik.append("zatop_")
-    korekta()
-tescior()
 
 pierwszenstwo = sys.argv[1]
 
-def proba():
+def gra():
     if pierwszenstwo == "-s":
         fire()
         dziennik.append(input())
@@ -493,7 +437,7 @@ def proba():
         if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
             print("koniec")
             sys.exit()
-        return proba()
+        return gra()
     
     elif pierwszenstwo == "-d":
         enemyfire = input()
@@ -505,38 +449,12 @@ def proba():
         else:
             c = 9
         obrywamy((a,c))
-        fire2()
+        fire()
         dziennik.append(input())
         korekta()
         if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
             print("koniec")
             sys.exit()
-        return proba()
+        return gra()
 
-proba()
-"""
-def test():
-    x = fire()
-    a = x[0]
-    a = slownik2[a]
-    #print(a)
-    b = int(x[1])
-    #print(b)
-    if b == 0:
-        c = int(x[2])-1
-    else:
-        c = 9
-    #print(c)
-    y = obrywamy((a,c))
-    #print(y, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-    if y == "trafio" or y == "zatop_":
-        ostatnistrzal.append(x)
-    dziennik.append(y)
-    #print(dziennik[len(dziennik)-1])
-    korekta()
-    if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
-        print("koniec")
-        sys.exit()
-    return test()
-
-test()
+gra()
