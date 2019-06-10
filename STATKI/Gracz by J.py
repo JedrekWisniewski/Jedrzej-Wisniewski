@@ -61,20 +61,20 @@ class Czteromaszt():
         self.d = d
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print("Trafiony")
+            print("trafio")
             self.a = -1
         elif enemyfire == self.b:
-            print("Trafiony")
+            print("trafio")
             self.b = -1
         elif enemyfire == self.c:
-            print("Trafiony")
+            print("trafio")
             self.c = -1
         elif enemyfire == self.d:
-            print("Trafiony")
+            print("trafio")
             self.d = -1
         if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
             self.a = "już zatopiony"
-            print ("Czteromasztowiec zatopiony")
+            print ("zatop_")
             
     
 class Trojmaszt():
@@ -84,17 +84,17 @@ class Trojmaszt():
         self.c = c
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print("Trafiony")
+            print("trafio")
             self.a = -1
         elif enemyfire == self.b:
-            print("Trafiony")
+            print("trafio")
             self.b = -1
         elif enemyfire == self.c:
-            print("Trafiony")
+            print("trafio")
             self.c = -1
         if self.a == -1 and self.b == -1 and self.c == -1:
             self.a = "już zatopiony"
-            print("Zatopiony trójmasztowiec")
+            print("zatop_")
 
 class Dwumaszt():
     def __init__(self,a,b):
@@ -102,25 +102,25 @@ class Dwumaszt():
         self.b = b
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print("Trafiony")
+            print("trafio")
             self.a = -1
         elif enemyfire == self.b:
-            print("Trafiony")
+            print("trafio")
             self.b = -1
         if self.a == -1 and self.b == -1:
             self.a = "już zatopiony"
-            print("Zatopiony dwumasztowiec")
+            print("zatop_")
 
 class Jednomaszt():
     def __init__(self,a):
         self.a = a
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print ("Trafiony")
+            print ("trafio")
             self.a = -1
         if self.a == -1:
             self.a = "już zatopiony"
-            print ("Zatopiony jednomasztowiec")
+            print ("zatop_")
 
 def tworzenie():
     #czteromasztowiec
@@ -390,7 +390,7 @@ def obrywamy(enemyfire):
     a = enemyfire[0]
     b = enemyfire[1]
     if mymap[b,a] == 0:
-        print ("Pudło")
+        print ("pudlo_")
 
 #TESTY######
 def test(strzaltest = 10):
@@ -404,14 +404,14 @@ def test(strzaltest = 10):
 mymap = wczytywanie()
 cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4 = tworzenie()
 flota = [cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4]
-
-"""def tescior():
+'''
+def tescior():
     ostatnistrzal.append("a01")
     ostatnistrzal.append("b01")
-    ostatnistrzal.append("c01")
+    ostatnistrzal.append("b02")
     ostatnistrzal.append("d02")
-    ostatnistrzal.append("d01")
-    ostatnistrzal.append("e01")
+    ostatnistrzal.append("b03")
+    ostatnistrzal.append("b04")
     dziennik.append("pudlo_")
     dziennik.append("trafio")
     dziennik.append("trafio")
@@ -421,7 +421,7 @@ flota = [cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4]
     statek =przygotowanie()
     print(statek)
 tescior()
-"""
+'''
 pierwszenstwo = sys.argv[1]
 
 def proba():
