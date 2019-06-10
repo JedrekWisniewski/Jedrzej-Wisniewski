@@ -1,6 +1,6 @@
 import sys
 def test1():
-    komunikat = sys.stdin
+    komunikat = input()
     print(" Powiedziałeś", komunikat,"?")
     
 test1()

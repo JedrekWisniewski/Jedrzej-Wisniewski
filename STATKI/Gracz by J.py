@@ -61,21 +61,41 @@ class Czteromaszt():
         self.d = d
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print("trafio")
             self.a = -1
+            if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
         elif enemyfire == self.b:
-            print("trafio")
             self.b = -1
+            if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
         elif enemyfire == self.c:
-            print("trafio")
             self.c = -1
+            if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
         elif enemyfire == self.d:
-            print("trafio")
             self.d = -1
-        if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
-            self.a = "już zatopiony"
-            print ("zatop_")
-            
+            if self.a == -1 and self.b == -1 and self.c == -1 and self.d == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
     
 class Trojmaszt():
     def __init__(self,a,b,c):
@@ -84,17 +104,32 @@ class Trojmaszt():
         self.c = c
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print("trafio")
             self.a = -1
+            if self.a == -1 and self.b == -1 and self.c == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
         elif enemyfire == self.b:
-            print("trafio")
             self.b = -1
+            if self.a == -1 and self.b == -1 and self.c == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
         elif enemyfire == self.c:
-            print("trafio")
             self.c = -1
-        if self.a == -1 and self.b == -1 and self.c == -1:
-            self.a = "już zatopiony"
-            print("zatop_")
+            if self.a == -1 and self.b == -1 and self.c == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
 
 class Dwumaszt():
     def __init__(self,a,b):
@@ -102,25 +137,34 @@ class Dwumaszt():
         self.b = b
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print("trafio")
             self.a = -1
+            if self.a == -1 and self.b == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
         elif enemyfire == self.b:
-            print("trafio")
             self.b = -1
-        if self.a == -1 and self.b == -1:
-            self.a = "już zatopiony"
-            print("zatop_")
+            if self.a == -1 and self.b == -1:
+                self.a = "już zatopiony"
+                print("zatop_")
+                return("zatop_")
+            else:
+                print("trafio")
+                return("trafio")
 
 class Jednomaszt():
     def __init__(self,a):
         self.a = a
     def trafiony(self, enemyfire):
         if enemyfire == self.a:
-            print ("trafio")
             self.a = -1
         if self.a == -1:
             self.a = "już zatopiony"
-            print ("zatop_")
+            print("zatop_")
+            return("zatop_")
 
 def tworzenie():
     #czteromasztowiec
@@ -193,9 +237,13 @@ def lewo(wsp_1,zatop_wsp):
 def gora(pion):
     pion = int(pion)
     pion = pion - 1
-    pion = str(pion)
-    pion = "0"+pion
-    return pion
+    if pion < 0:
+        pion = "blad"
+        return pion
+    else:
+        pion = str(pion)
+        pion = "0"+pion
+        return pion
 def dol(pion):
     pion = int(pion)
     pion = pion + 1
@@ -209,12 +257,16 @@ def dol(pion):
 def przygotowanie():
     statek = []
     komunikat = dziennik[len(dziennik)-1]
+    #print(komunikat)
     if komunikat == "zatop_":
         #pierwszy koord
         zatop_wsp = ostatnistrzal[len(ostatnistrzal)-1]
+        #print(zatop_wsp)
         statek.append(zatop_wsp)
+        #print(statek)
         wsp_1 = zatop_wsp[0]
         pion = int(zatop_wsp[1] + zatop_wsp[2])
+        #print(pion)
         #w lewo
         newkoord, wsp_2 = lewo(wsp_1, zatop_wsp)
         if newkoord in ostatnistrzal:
@@ -342,7 +394,9 @@ def usunskosy(pozycja):
     prawo = slownik1[poz1 + 1]
     usungoradol(prawo)
     usungoradol(lewo)
-def korekta(statek):
+def korekta():
+    statek = przygotowanie()
+    #print(statek)
     for pozycja in statek:
         try:
             usungoradol(pozycja)
@@ -366,8 +420,8 @@ def fire():
     y = len(ruchy) - 1
     x = r.randint(0, y)
     strzal = ruchy[x]
-    print(strzal, "||||||||||", y)
-    ostatnistrzal.append(strzal)
+    print(strzal)
+    #ostatnistrzal.append(strzal)
     ruchy.pop(x)
     return(strzal)
 
@@ -385,26 +439,25 @@ def fire2():
     
 # Iteruje po każdym statku, wywołując metodę "trafiony" względem "enemyfire"=koordynatów
 def obrywamy(enemyfire):
-    for statek in flota:
-        statek.trafiony(enemyfire)
+    for i in flota:
+        x = i.trafiony(enemyfire)
+        if x == "trafio":
+            return x
+        elif x == "zatop_":
+            return x
     a = enemyfire[0]
     b = enemyfire[1]
     if mymap[b,a] == 0:
-        print ("pudlo_")
+        print("pudlo_")
+        return("pudlo_")
 
-#TESTY######
-def test(strzaltest = 10):
-    for i in range(strzaltest):
-        print("strzelam")
-        x = fire()
-        print(x)
-        obrywamy(x)
+#TESTY####
 
 #Wczytanie, stworzenie statków, dodanie do floty
 mymap = wczytywanie()
 cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4 = tworzenie()
 flota = [cztm, trz1, trz2, dwu1, dwu2, dwu3, jed1, jed2, jed3, jed4]
-'''
+"""
 def tescior():
     ostatnistrzal.append("a01")
     ostatnistrzal.append("b01")
@@ -418,18 +471,17 @@ def tescior():
     dziennik.append("pudlo_")
     dziennik.append("trafio")
     dziennik.append("zatop_")
-    statek =przygotowanie()
-    print(statek)
+    korekta()
 tescior()
-'''
+
 pierwszenstwo = sys.argv[1]
 
 def proba():
     if pierwszenstwo == "-s":
         fire()
-        dziennik.append(sys.stdin)
+        dziennik.append(input())
         korekta()
-        enemyfire = sys.stdin
+        enemyfire = input()
         a = enemyfire[0]
         a = slownik2[a]
         b = int(enemyfire[1])
@@ -444,7 +496,7 @@ def proba():
         return proba()
     
     elif pierwszenstwo == "-d":
-        enemyfire = sys.stdin
+        enemyfire = input()
         a = enemyfire[0]
         a = slownik2[a]
         b = int(enemyfire[1])
@@ -454,10 +506,37 @@ def proba():
             c = 9
         obrywamy((a,c))
         fire2()
-        dziennik.append(sys.stdin)
+        dziennik.append(input())
         korekta()
         if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
             print("koniec")
             sys.exit()
         return proba()
 
+proba()
+"""
+def test():
+    x = fire()
+    a = x[0]
+    a = slownik2[a]
+    #print(a)
+    b = int(x[1])
+    #print(b)
+    if b == 0:
+        c = int(x[2])-1
+    else:
+        c = 9
+    #print(c)
+    y = obrywamy((a,c))
+    #print(y, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    if y == "trafio" or y == "zatop_":
+        ostatnistrzal.append(x)
+    dziennik.append(y)
+    #print(dziennik[len(dziennik)-1])
+    korekta()
+    if cztm.a == "już zatopiony" and trz1.a == "już zatopiony" and trz2.a == "już zatopiony" and dwu1.a == "już zatopiony" and dwu2.a == "już zatopiony" and dwu3.a == "już zatopiony" and jed1.a == "już zatopiony" and jed2.a == "już zatopiony" and jed3.a == "już zatopiony" and jed4.a == "już zatopiony":
+        print("koniec")
+        sys.exit()
+    return test()
+
+test()
